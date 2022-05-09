@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show customer info</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <a href="index.html">
+                <li>Home</li>
+            </a>
+            <li><a href="news.asp">News</a></li>
+            <li><a href="contact.asp">Contact</a></li>
+            <li><a href="about.asp">About</a></li>
+            <li id="dropdown">
+                <div class="dropdown">
+                    <div class="dropbtn">&#9776;</div>
+                    <div class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="showCustomersContainer">
+
+    </div>
+
+    <table id="table">
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Zip</th>
+            <th>City</th>
+            <th>PIB</th>
+            <th>MB</th>
+            <th>Phone</th>
+            <th>Bank account</th>
+            <th>email</th>
+        </tr>
+    </table>
+
+
+
+    <script>
+        window.onload = function () {
+            var xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function () {
+                if (this.readyState != 4) return;
+
+                if (this.status == 200) {
+                    let customers = JSON.parse(this.responseText);
+                    console.table(customers)
+                    addElement(customers)
+                }
+            };
+
+            xhr.open('GET', 'http://localhost:8080/customers/listAll', true);
+            xhr.send();
+
+        }
+
+
+        function addElement(customers) {
+
+            for (let i in customers) {
+                customer = customers[i]
+                let newDiv = document.createElement("div");
+                let newContent = document.createTextNode(customer.name + " " + customer.pib);
+                newDiv.appendChild(newContent);
+
+                let currentDiv = document.getElementById("showCustomersContainer");
+                document.body.insertBefore(newDiv, currentDiv);
+            }
+
+            let table = document.getElementById("table")
+
+            for (let i in customers) {
+                customer = customers[i]
+                let row = table.insertRow(i + 1)
+                for (let j; j < 9; j++) {
+                    let cell = row.insertCell(j)
+                    cell.innerHTML = (customer.name)
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
