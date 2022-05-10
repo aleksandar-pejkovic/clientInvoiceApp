@@ -156,3 +156,20 @@ a {
 #createCustomerBtn:hover {
     background: linear-gradient(-45deg, black, #0f0505, #1d1c06, #041f18);
 }
+
+#customerTblContainer{
+    display: flex;
+    justify-content: center;
+}
+
+#customerTbl  {
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#customerTbl > th, td {
+    padding: 20px;
+    border: black 2px solid;
+    border-collapse: collapse;
+    width: 100px;
+}

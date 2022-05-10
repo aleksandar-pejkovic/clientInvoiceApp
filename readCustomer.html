@@ -31,25 +31,9 @@
         </ul>
     </nav>
 
-    <div id="showCustomersContainer">
+    <div id="customerTblContainer">
 
     </div>
-
-    <table id="table">
-        <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Zip</th>
-            <th>City</th>
-            <th>PIB</th>
-            <th>MB</th>
-            <th>Phone</th>
-            <th>Bank account</th>
-            <th>email</th>
-        </tr>
-    </table>
-
-
 
     <script>
         window.onload = function () {
@@ -61,7 +45,7 @@
                 if (this.status == 200) {
                     let customers = JSON.parse(this.responseText);
                     console.table(customers)
-                    addElement(customers)
+                    createTable(customers)
                 }
             };
 
@@ -71,30 +55,46 @@
         }
 
 
-        function addElement(customers) {
 
-            for (let i in customers) {
-                customer = customers[i]
-                let newDiv = document.createElement("div");
-                let newContent = document.createTextNode(customer.name + " " + customer.pib);
-                newDiv.appendChild(newContent);
 
-                let currentDiv = document.getElementById("showCustomersContainer");
-                document.body.insertBefore(newDiv, currentDiv);
-            }
-
-            let table = document.getElementById("table")
-
-            for (let i in customers) {
-                customer = customers[i]
-                let row = table.insertRow(i + 1)
-                for (let j; j < 9; j++) {
-                    let cell = row.insertCell(j)
-                    cell.innerHTML = (customer.name)
+            const createTable = function (customers) {
+                const table = document.createElement("table");
+                table.setAttribute('id', 'customerTbl')
+                const header = document.createElement("tr");
+                const keys = Object.keys(customers[0])
+                console.log(keys)
+                for (const key of keys) {
+                    const th = document.createElement("th");
+                    th.appendChild(document.createTextNode(key));
+                    header.appendChild(th);
                 }
+                table.appendChild(header);
+                const len = customers.length
+                for (const row of customers) {
+                    const tr = document.createElement("tr");
+                    for (const key of keys) {
+                        const td = document.createElement("td");
+                        const content = row[key] || ''
+                        td.appendChild(document.createTextNode(content));
+                        tr.appendChild(td);
+                        delete row[key]
+                    }
+                    for (const key in row) {
+                        const th = document.createElement("th");
+                        th.appendChild(document.createTextNode(key))
+                        keys.push(key)
+                        header.appendChild(th);
+                        const td = document.createElement("td");
+                        const content = row[key] || ''
+                        td.appendChild(document.createTextNode(content));
+                        tr.appendChild(td);
+                    }
+                    table.appendChild(tr);
+                }
+                document.getElementById("customerTblContainer").appendChild(table);
             }
-        }
-
+ 
+        
     </script>
 </body>
 
