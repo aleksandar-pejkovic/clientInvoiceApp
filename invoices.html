@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice creator</title>
+    <title>Customer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -31,30 +31,37 @@
         </ul>
     </nav>
     <div class="selectionContainer">
-        <a href="invoices.html" class="selectionWindow">
+        <a href="createInvoice.html" class="selectionWindow">
             <div>
-                Invoices
+                Create
             </div>
         </a>
-        <a href="customers.html" class="selectionWindow">
+        <a href="readInvoice.html" class="selectionWindow">
             <div>
-                Customers
+                Read
             </div>
         </a>
-        <a href="products.html" class="selectionWindow">
+        <a href="updateInvoice.html" class="selectionWindow">
             <div>
-                Products
+                Update
             </div>
         </a>
+        <a href="deleteInvoice.html" class="selectionWindow">
+            <div>
+                Delete
+            </div>
+        </a>  
     </div>
 
     <div class="regularDiv">
-        <h1>This is a free app for creating invoices</h1>
-        <h3>Instructions about making rest calls with JSON format examples</h3>
-        <p>
-            {
+        <h1>Invoices</h1>
 
-            }
+
+        <p>
+            POST - http://localhost:8080/invoices/create (JSON) <br>
+            GET - http://localhost:8080/invoices <br>
+            GET - http://localhost:8080/invoices/name/{name} <br>
+            PUT - http://localhost:8080/invoices/update <br>
         </p>
     </div>
 

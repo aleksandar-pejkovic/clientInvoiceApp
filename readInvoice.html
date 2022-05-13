@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Show customer info</title>
+    <title>Show invoice info</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -42,13 +42,15 @@
                 if (this.readyState != 4) return;
 
                 if (this.status == 200) {
-                    let customers = JSON.parse(this.responseText);
-                    console.table(customers)
-                    createTable(customers)
+                    let obj = JSON.parse(this.responseText);
+                    
+                    console.table(obj)
+                    
+                    createTable(obj)
                 }
             };
 
-            xhr.open('GET', 'http://localhost:8080/customers/listAll', true);
+            xhr.open('GET', 'http://localhost:8080/invoices/listAll', true);
             xhr.send();
 
         }

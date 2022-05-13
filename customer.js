@@ -1,5 +1,4 @@
-
-document.getElementById("createCustomerBtn").onclick = function () {
+document.getElementById("createCustomerBtn").onclick = function () {s
 
     let name = document.getElementById("name").value
     let address = document.getElementById("address").value

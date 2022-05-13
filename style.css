@@ -157,17 +157,17 @@ a {
     background: linear-gradient(-45deg, black, #0f0505, #1d1c06, #041f18);
 }
 
-#customerTblContainer{
+#tblContainer{
     display: flex;
     justify-content: center;
 }
 
-#customerTbl  {
+#tbl  {
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-#customerTbl > th, td {
+#tbl > th, td {
     padding: 20px;
     border: black 2px solid;
     border-collapse: collapse;
