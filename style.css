@@ -158,9 +158,16 @@ a {
     background: linear-gradient(-45deg, black, #0f0505, #1d1c06, #041f18);
 }
 
+#tblWrap {
+    display: flex;
+    justify-content: center;
+}
+
 #tblContainer{
     display: flex;
     justify-content: center;
+    max-height: 400px;
+    overflow: auto;
 }
 
 #tbl  {
