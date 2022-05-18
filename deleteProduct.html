@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete product</title>
+</head>
+
+<body>
+
+    <label for="deleteInput"></label>
+    <input type="text" name="deleteInput" id="deleteInput">
+    <button type="submit" id="submit">Delete</button>
+
+    <script>
+        document.getElementById("submit").onclick = function () {
+            let url
+            let productName = document.getElementById("deleteInput").value
+            url = 'http://localhost:8080/products/delete/' + productName
+            var xhr = new XMLHttpRequest();
+            xhr.open('DELETE', url, true);
+            xhr.send();
+
+        }
+    </script>
+</body>
+
+</html>

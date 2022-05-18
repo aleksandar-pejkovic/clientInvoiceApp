@@ -5,12 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoices</title>
+    <title>Show invoice</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
     <nav>
         <ul>
             <a href="index.html">
@@ -42,45 +41,10 @@
         <div id="tblContainer">
 
         </div>
+
     </div>
-    <div class="selectionContainer">
-        <a href="createInvoice.html" class="selectionWindow">
-            <div>
-                Create
-            </div>
-        </a>
-        <a href="showInvoice.html" class="selectionWindow">
-            <div>
-                Show invoice
-            </div>
-        </a>
-        <a href="updateInvoice.html" class="selectionWindow">
-            <div>
-                Update
-            </div>
-        </a>
-        <a href="deleteInvoice.html" class="selectionWindow">
-            <div>
-                Delete
-            </div>
-        </a>
-    </div>
-
-    <div class="regularDiv">
-        <h1>Invoices</h1>
-
-
-        <p>
-            POST - http://localhost:8080/invoices/create (JSON) <br>
-            GET - http://localhost:8080/invoices/listAll <br>
-            GET - http://localhost:8080/invoices/name/{name} <br>
-            PUT - http://localhost:8080/invoices/update <br>
-        </p>
-    </div>
-
-
-    <script src="listingData.js">
-    </script>
+    
+    <script src="listingData.js"></script>
 </body>
 
 </html>

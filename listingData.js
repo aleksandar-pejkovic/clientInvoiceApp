@@ -1,5 +1,11 @@
+
 window.onload = function () {
 
+    sendRequest()
+
+}
+
+const sendRequest = function () {
     let url
     var path = window.location.pathname;
     var page = path.split("/").pop();
@@ -8,13 +14,17 @@ window.onload = function () {
     let invoicePage = page.localeCompare("invoices.html")
     let customersPage = page.localeCompare("customers.html")
     let productsPage = page.localeCompare("products.html")
+    let itemsPage = page.localeCompare("showInvoice.html")
 
-    if(invoicePage==0){
+    if (invoicePage == 0) {
         url = 'http://localhost:8080/invoices/listAll'
-    } else if (customersPage==0) {
+    } else if (customersPage == 0) {
         url = 'http://localhost:8080/customers/listAll'
-    } else {
+    } else if (productsPage == 0) {
         url = 'http://localhost:8080/products/listAll'
+    } else {
+        let invoiceName = prompt("Enter invoice name:")
+        url = 'http://localhost:8080/items/list/' + invoiceName
     }
 
     var xhr = new XMLHttpRequest();
@@ -23,15 +33,14 @@ window.onload = function () {
         if (this.readyState != 4) return;
 
         if (this.status == 200) {
-            let customers = JSON.parse(this.responseText);
-            console.table(customers)
-            createTable(customers)
+            let obj = JSON.parse(this.responseText);
+            console.table(obj)
+            createTable(obj)
         }
     };
 
     xhr.open('GET', url, true);
     xhr.send();
-
 }
 
 
